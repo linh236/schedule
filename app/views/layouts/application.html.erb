@@ -13,8 +13,11 @@
 
   <body>
     <%= render "layouts/shared/nav" %>
+    <div id="toastMessage">
+      <%#= render partial: "shared/toast", locals: {title: "helo", message: "note", type: 'error'} %>
+    </div>
     <%= render 'shared/notices' %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto">
       <%= yield %>
     </main>
   </body>
