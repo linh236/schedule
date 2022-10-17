@@ -1,0 +1,7 @@
+<%= render partial: "dashboard/shared/note_level", locals: {levels: Event.levels.to_a} %>
+<div id="calendar">
+  <%= render partial: "dashboard/shared/calendar", locals: {events: @events} %>
+</div>
+<div id="event_modal">
+  <%= render partial: "events/event_modal", locals: {event: @event, selectedDate: @selectedDate} %>
+</div>

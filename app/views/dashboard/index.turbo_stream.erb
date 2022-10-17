@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "event_start_time" do %>
+<input data-events-target="start" value="<%=@selectedDate%>" class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" type="date" name="event[start_time]" id="event_start_time">
+<% end %>
+<%= turbo_stream.replace "event_end_time" do %>
+  <input data-events-target="end" value="<%=@selectedDate%>" class="block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" type="date" name="event[end_time]" id="event_end_time">
+<% end %>
