@@ -13,6 +13,6 @@ module ApplicationHelper
   end
 
   def format_datetime datetime
-    datetime.strftime("%Y-%m-%d")
+    datetime.strftime("%Y-%m-%d %H:%M")
   end
 end

@@ -1,6 +1,29 @@
-<%= render partial: "dashboard/shared/note_level", locals: {levels: Event.levels.to_a} %>
-<div id="calendar">
-  <%= render partial: "dashboard/shared/calendar", locals: {events: @events} %>
+<div class="flex flex-col md:flex-row gap-4">
+  <% if user_signed_in? %>
+    <div class="basis-1/4 flex justify-center md:content-start">
+      <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="w-full relative flex flex-col items-center mb-10">
+          <%= image_tag "image.jpg", class: "rounded-t-lg", size: "100%x100%" %>
+          <%= image_tag "avatars/#{rand(10..27)}.png", size: "100x100", class: "absolute md:top-[80%] sm:top-[50%]" %> 
+        </div>
+        <div class="p-5">
+            <a>
+              <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= current_user.username %></h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= current_user.description %></p>
+            <%= turbo_frame_tag "check_in_out" do %>
+              <%= render partial: "dashboard/shared/check_in_out", locals: {attendance: @attendance} %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="<%= user_signed_in? ? "basis-3/4" : "w-full" %> overflow-hidden">
+    <div id="calendar">
+      <%= render partial: "dashboard/shared/note_level", locals: {levels: Event.levels.to_a} %>
+      <%= render partial: "dashboard/shared/calendar", locals: {events: @events} %>
+    </div>
+  </div>
 </div>
 <div id="event_modal">
   <%= render partial: "events/event_modal", locals: {event: @event, selectedDate: @selectedDate} %>

@@ -1,0 +1,27 @@
+<div class="w-100 flex items-center content-center gap-2 flex-col" data-controller="attendance-logs">
+  <a data-action="click->attendance-logs#check_in_out"
+    data-attendance-logs-url-param="<%=attendance.present? && attendance.is_check_in ? check_out_path : check_in_path%>"
+    data-attendance-logs-status-param="<%= attendance.present? && attendance.is_check_in %>"
+    class="cursor-pointer inline-flex content-center items-center py-2 px-3 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none 
+                <%=attendance.present? && attendance.is_check_in ? 'bg-red-700 hover:bg-red-800' : 'bg-blue-700 hover:bg-blue-800' %>">
+    <%= attendance.present? && attendance.is_check_in ? "Check Out" : "Check In" %>
+  </a>
+</div>
+<div class="columns-2 py-4">
+    <b>Today:</b> 
+    <p><%= format_datetime(DateTime.now) %></p>
+</div>
+
+<div class="columns-2 py-4">
+  <% if attendance.present? && attendance.is_check_in %>
+    <b>Check in:</b> 
+    <p><%= format_datetime(attendance.check_in_at) %></p>
+  <% end %>
+</div>
+
+<div class="columns-2 py-4">
+  <% if attendance.present? && attendance.is_check_out %>
+    <b>Check out:</b> 
+    <p><%= format_datetime(attendance.check_out_at) %></p>
+  <% end %>
+</div>

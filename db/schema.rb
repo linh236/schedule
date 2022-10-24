@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_16_052720) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_23_174358) do
+  create_table "attendance_logs", force: :cascade do |t|
+    t.datetime "check_in_at"
+    t.datetime "check_out_at"
+    t.boolean "is_check_in", default: false
+    t.boolean "is_check_out", default: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.index ["user_id"], name: "index_attendance_logs_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "start_time"
@@ -20,6 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_052720) do
     t.datetime "updated_at", null: false
     t.text "note"
     t.integer "level", default: 1
+    t.boolean "is_leave", default: false
+    t.boolean "approved", default: false
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -34,9 +48,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_16_052720) do
     t.string "username"
     t.date "birthday"
     t.string "phone"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendance_logs", "users"
   add_foreign_key "events", "users"
 end
