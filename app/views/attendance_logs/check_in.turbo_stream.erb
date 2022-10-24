@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "toastMessage" do %>
+  <%= render partial: "shared/toast", locals: {title: "Success", message: "Check in successfully !", type: 'success'} %>
+<% end %>
+
+<%= turbo_stream.update "check_in_out" do %>
+  <%= render partial: "dashboard/shared/check_in_out", locals: {attendance: @attendance} %>
+<% end %>
