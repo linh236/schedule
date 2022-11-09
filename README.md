@@ -17,7 +17,7 @@ Things you may want to cover:
 
 * rails db:migrate & rails db:seed
 
-* Open browser: localhost:3000
+* Open browser: http://localhost:3000/
 
 * Login
 
