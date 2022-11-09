@@ -5,21 +5,39 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.x
 
-* System dependencies
+* Rails version 7.x
 
-* Configuration
+* Using Stimulus, turbo_stream, TailWindCss, Drap and Drop events, approves
 
-* Database creation
+* git clone git@github.com:linh236/schedule.git
 
-* Database initialization
+* cd schedule
 
-* How to run the test suite
+* rails db:migrate & rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+* Open browser: localhost:3000
 
-* Deployment instructions
+* Login
+
+  1. Admin: admin@gmail.com (password: password)
+  2. User: user@gmail.com (password: password)
+  
+------------------------- Admin --------------------
+* Dashboard page
+
+ ![image](https://user-images.githubusercontent.com/40066172/200892313-6d4c03a8-0e8a-49e4-a05e-d17cfc20d4a0.png)
+
+* Approves page: Drap and Drop
+
+![image](https://user-images.githubusercontent.com/40066172/200892773-9835d1ab-6ef9-42cf-9351-1870fe4b8a7b.png)
+
+------------------------- User ----------------------
+
+* Home page 
+
+![image](https://user-images.githubusercontent.com/40066172/200893016-1da44fc7-6bca-4add-b4ee-7099fd06739f.png)
 
 * ...
 # schedule
