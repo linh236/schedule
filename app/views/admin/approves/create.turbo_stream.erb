@@ -1,0 +1,5 @@
+<%= turbo_stream.update "approve-list" do %>
+  <% @approves.each do |approve| %>
+    <%= render partial: "admin/approves/shared/approve", locals: { approve: approve } %>
+  <% end %>
+<% end %>

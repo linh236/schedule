@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "calendar_list_event" do %>
+  <%= month_calendar(events: events) do |date, events| %>
+    <div class="day absolute top-1 left-1">
+      <%= date.day %>
+    </div>
+
+    <% events.each do |event| %>
+      <div class="text-left flex gap-1 items-center" data-id="<%= event.id %>" draggable="true" data-events-target="event" data-action="dragstart->events#dragStart dragend->events#dragEnd drop->events#drop dragenter->events#dragEnter 
+        dragleave->events#dragLeave dragover->events#dragOver">
+        <svg class="w-4 h-4" fill="<%=check_level(event.level)%>" stroke="<%=check_level(event.level)%>" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path></svg>
+        <%= event.name.capitalize %>
+      </div>
+    <% end %>
+    <%= render partial: "admin/dashboard/shared/popver", locals: {date: date, events: events} %>
+  <% end %>
+<% end %>

@@ -1,0 +1,3 @@
+<%= turbo_stream.update "approve-#{@approve.id}" do %>
+  <%= render partial: "admin/approves/shared/approve", locals: { approve: @approve } %>
+<% end %>

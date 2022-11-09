@@ -1,0 +1,11 @@
+<div class="flex flex-col md:flex-row gap-4">
+  <div class="w-full">
+    <div id="calendar" data-controller="events">
+      <%= render partial: "admin/dashboard/shared/note_level", locals: {levels: Event.levels.to_a} %>
+      <%= render partial: "admin/dashboard/shared/calendar", locals: {events: @events} %>
+    </div>
+  </div>
+</div>
+<div id="event_modal">
+  <%= render partial: "admin/events/event_modal", locals: {event: @event, selectedDate: @selectedDate} %>
+</div>

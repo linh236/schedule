@@ -1,7 +1,7 @@
-import RequestService from "./request_service"
+import RequestController from "./request_controller"
 
 // Connects to data-controller="attendance-logs"
-export default class extends RequestService {
+export default class extends RequestController {
 
   connect() {
   }

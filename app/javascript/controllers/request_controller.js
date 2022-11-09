@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
-export default class RequestService extends Controller {
+// Connects to data-controller="request"
+export default class extends Controller {
 
-  constructor() {
-    super()
+  connect() {
   }
 
   sendGet({url: url, method: method}) {
@@ -27,9 +27,10 @@ export default class RequestService extends Controller {
         'X-CSRF-Token': document.querySelector(
           'meta[name="csrf-token"]'
         ).content,
-        Accept: "text/vnd.turbo-stream.html"
+        Accept: "text/vnd.turbo-stream.html",
+        "Content-Type": "application/json"
       },
-      body: body,
+      body: JSON.stringify(body),
     })
     .then(r => r.text())
     .then(html => Turbo.renderStreamMessage(html))

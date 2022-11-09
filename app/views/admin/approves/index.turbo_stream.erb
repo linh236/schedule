@@ -1,0 +1,14 @@
+<%= turbo_stream.update "approve-list" do %>
+  <% @approves.each do |approve| %>
+    <%= render partial: "admin/approves/shared/approve", locals: { approve: approve } %>
+  <% end %>
+<% end %>
+<%= turbo_stream.update "approve-list-mobile" do %>
+  <% @approves.each do |approve| %>
+    <%= render partial: "admin/approves/shared/approve", locals: { approve: approve } %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update "next-prev" do %>
+  <%= render partial: "admin/approves/shared/next_pre_btn" , locals: { approves: @approves } %>
+<% end %>

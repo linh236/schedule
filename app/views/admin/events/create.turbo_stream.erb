@@ -1,0 +1,11 @@
+<%= turbo_stream.remove "remote_modal" do %>
+  <div data-controller="events"></div>
+<% end %>
+
+<%= turbo_stream.replace "toastMessage" do %>
+  <%= render partial: "shared/toast", locals: {title: "Success", message: "Created event successfully !", type: 'success'} %>
+<% end %>
+
+<%= turbo_stream.update "calendar_list_event" do %>
+  <%= render partial: "dashboard/shared/calendar", locals: {events: @events} %>
+<% end %>
