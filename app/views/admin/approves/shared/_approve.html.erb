@@ -1,0 +1,26 @@
+<div class="approve mb-2" id="approve-<%= approve.id %>">
+  <a data-position="<%= approve.position %>" data-id="<%= approve.id %>" draggable="true" data-approves-target="approve" data-action="dragstart->approves#dragStart dragend->approves#dragEnd drop->approves#drop dragenter->approves#dragEnter 
+    dragleave->approves#dragLeave dragover->approves#dragOver click->approves#detail"
+    href="#" class="relative block p-6 max-w-md bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <svg data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="w-4 h-4 absolute left-1 top-1" fill="<%=check_level(approve.event.level)%>" stroke="<%=check_level(approve.event.level)%>" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path data-position="<%= approve.position %>" data-id="<%= approve.id %>" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+      </svg>
+      <% if approve.is_approved %>
+        <svg data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="w-4 h-4 absolute right-1 top-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path data-position="<%= approve.position %>" data-id="<%= approve.id %>" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+      <% elsif !approve.is_approved && approve.note.present? %>
+        <svg data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="w-4 h-4 absolute right-1 top-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path data-position="<%= approve.position %>" data-id="<%= approve.id %>" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+        </svg>
+      <% else %>
+      <svg data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="w-4 h-4 absolute right-1 top-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path data-position="<%= approve.position %>" data-id="<%= approve.id %>" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        <path data-position="<%= approve.position %>" data-id="<%= approve.id %>" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+      </svg>
+      <% end %>
+      <h5 data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= approve.event.name %></h5>
+      <p data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="font-normal text-gray-700 dark:text-gray-400">By: <%= approve.event.user.username %></p>
+      <p data-position="<%= approve.position %>" data-id="<%= approve.id %>" class="font-normal text-gray-700 dark:text-gray-400">Created: <%= format_date(approve.created_at) %></p>
+  </a>
+</div>

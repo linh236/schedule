@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Schedule</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <main class="relative min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800 overflow-hidden">
+      <%= render partial: "layouts/shared/nav_admin", locals: {approve_count: @approve_count} %>
+      <div class="px-4 top-0 min-h-screen ml-[58px] md:ml-[16rem] py-6 w-[90%] md:w-[80%]">
+        <%= yield %>
+      </div>
+    </main>
+    <div class="w-[100%] absolute right-4 top-4" id="toastMessage">
+  </body>
+</html>

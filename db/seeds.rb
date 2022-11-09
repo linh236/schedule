@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+[
+  {id: 1, email: "admin@gmail.com", password: "password", role: 'admin'},
+  {id: 2, email: "user@gmail.com", password: "password", role: 'user'},
+].each do |attr|
+  user = User.find_by(id: attr[:id])
+  User.transaction do
+    unless user
+      user = User.new(attr)
+      user.save
+    else
+      user.update_attributes attr
+    end
+  end
+end

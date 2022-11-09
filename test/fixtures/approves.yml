@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  user_id: MyString
+  is_approved: false
+  note: MyText
+
+two:
+  event: two
+  user_id: MyString
+  is_approved: false
+  note: MyText

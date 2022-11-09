@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_23_174358) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_03_161742) do
+  create_table "approves", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.string "user_id"
+    t.boolean "is_approved", default: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "position"
+    t.index ["event_id"], name: "index_approves_on_event_id"
+    t.index ["user_id"], name: "index_approves_on_user_id"
+  end
+
   create_table "attendance_logs", force: :cascade do |t|
     t.datetime "check_in_at"
     t.datetime "check_out_at"
@@ -23,6 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_174358) do
     t.index ["user_id"], name: "index_attendance_logs_on_user_id"
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "start_time"
@@ -33,7 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_174358) do
     t.text "note"
     t.integer "level", default: 1
     t.boolean "is_leave", default: false
-    t.boolean "approved", default: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_events_on_deleted_at"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -49,10 +69,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_174358) do
     t.date "birthday"
     t.string "phone"
     t.text "description"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "approves", "events"
   add_foreign_key "attendance_logs", "users"
   add_foreign_key "events", "users"
 end

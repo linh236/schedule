@@ -76,3 +76,7 @@ gem "devise", "~> 4.8"
 gem "jsbundling-rails", "~> 1.0"
 
 gem "simple_calendar", "~> 2.4"
+
+gem "paranoia", "~> 2.6"
+
+gem "pagy", "~> 5.10"

@@ -1,0 +1,3 @@
+<%= turbo_stream.update "calendar_list_event" do %>
+  <%= render partial: "admin/dashboard/shared/calendar", locals: {events: @events} %>
+<% end %>

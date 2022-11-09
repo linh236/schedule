@@ -7,19 +7,19 @@
     <%= attendance.present? && attendance.is_check_in ? "Check Out" : "Check In" %>
   </a>
 </div>
-<div class="columns-2 py-4">
+<div class="grid grid-cols-2 py-4" data-controller="helper">
     <b>Today:</b> 
-    <p><%= format_datetime(DateTime.now) %></p>
+    <p data-helper-target="currenttime"><%= clock(DateTime.now) %></p>
 </div>
 
-<div class="columns-2 py-4">
+<div class="grid grid-cols-2 py-4">
   <% if attendance.present? && attendance.is_check_in %>
     <b>Check in:</b> 
     <p><%= format_datetime(attendance.check_in_at) %></p>
   <% end %>
 </div>
 
-<div class="columns-2 py-4">
+<div class="grid grid-cols-2 py-4">
   <% if attendance.present? && attendance.is_check_out %>
     <b>Check out:</b> 
     <p><%= format_datetime(attendance.check_out_at) %></p>
