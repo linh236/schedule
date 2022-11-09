@@ -3,8 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    start_date = params.fetch(:start_date, Date.today).to_date
-    @events = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, user: current_user)
+    get_event_in_month
   end
 
   # GET /events/1 or /events/1.json
@@ -13,8 +12,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    start_date = params.fetch(:start_date, Date.today).to_date
-    @events = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, user: current_user)
+    get_event_in_month
   end
 
   # GET /events/1/edit
@@ -26,8 +24,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.save
-      start_date = params.fetch(:start_date, Date.today).to_date
-      @events = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, user: current_user)
+      get_event_in_month
     else
       render_toast('Error', full_mes(@event), 'error')
     end
@@ -60,4 +57,10 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :start_time, :end_time, :note, :level, :is_leave)
     end
+
+    def get_event_in_month
+      start_date = params.fetch(:start_date, Date.today).to_date
+      @events = Event.only_events.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, user: current_user)
+    end
+  
 end
