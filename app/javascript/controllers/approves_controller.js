@@ -105,11 +105,11 @@ export default class extends RequestController {
     this.timeout = setTimeout(() => {
       if (event.target.value.length < 20) {
         this.btnCreateTarget.disabled = true;
-        this.noteErrorTarget.innerHTML = `${event.target.value.length}/20`
       } else {
         this.btnCreateTarget.disabled = false;
       }
-    }, 200)
+      this.noteErrorTarget.innerHTML = `${event.target.value.length}/20`
+    }, 100)
   }
 
   selectStatus(event) {

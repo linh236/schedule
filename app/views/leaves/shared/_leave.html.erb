@@ -1,0 +1,12 @@
+<% leaves.each do |leave| %>
+  <div class="leave mb-2" id="leave-<%= leave.id %>">
+    <a data-id="<%= leave.id %>" data-leave-target="leave" data-action="click->leave#detail"
+      href="" class="relative block p-6 max-w-md bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <svg data-id="<%= leave.id %>" class="w-4 h-4 absolute left-1 top-1" fill="<%=check_level(leave.event.level)%>" stroke="<%=check_level(leave.event.level)%>" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path data-id="<%= leave.id %>" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+        </svg>
+        <h5 data-id="<%= leave.id %>" class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= leave.event.name %></h5>
+        <p data-id="<%= leave.id %>" class="font-normal text-gray-700 dark:text-gray-400">Created: <%= format_date(leave.created_at) %></p>
+    </a>
+  </div>
+<% end %>

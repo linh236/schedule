@@ -1,0 +1,26 @@
+<div class="user h-[45vh]">
+  <h5 class="text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white"><%= leave.event.name %></h5>
+  <p><%= leave.event.note%></p>
+</div>
+<hr>
+<div class="approver mt-2">
+  <% unless leave.user_id.present? %>
+    <div class="flex gap-2">
+      <p class="font-bold tracking-tight text-gray-900 dark:text-white">Your application for leave is pending</p>
+      <%= link_to 'Delete', leafe_path(leave), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-red-500 font-medium" %>
+    </div>
+  <% else %>
+    <p>
+      Approver: <%= leave.user.username %>
+    </p> 
+    <p>
+      Date: <%= format_datetime(leave.updated_at)%>
+    </p>
+    <% unless leave.is_approved && leave.user_id.present? %>
+      <p>
+        Note: <%= leave.note %>
+      </p>
+    <% end %>
+
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "toastMessage" do %>
+  <%= render partial: "shared/toast", locals: {title: "Success", message: "Delete successfully !", type: 'success'} %>
+<% end %>
+
+<%= turbo_stream.remove "leave-#{@leave.id}" do %>
+
+<% end %>

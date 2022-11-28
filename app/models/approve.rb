@@ -1,5 +1,7 @@
 class Approve < ApplicationRecord
+  acts_as_paranoid
   belongs_to :event
+  belongs_to :user, optional: true
 
   after_create :update_position
 

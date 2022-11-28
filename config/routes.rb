@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "check_in", to: "attendance_logs#check_in"
   put "check_out", to: "attendance_logs#check_out"
 
+  resources :leaves
   root to: "dashboard#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
