@@ -7,9 +7,11 @@ import AttendanceLogsController from "./attendance_logs_controller";
 import HelperController from "./helper_controller";
 import RequestController from "./request_controller";
 import ApprovesController from "./approves_controller";
+import LeaveController from "./leave_controller";
 
 application.register("events", EventsController)
 application.register("attendance-logs", AttendanceLogsController)
 application.register("helper", HelperController)
 application.register("request", RequestController)
 application.register("approves", ApprovesController)
+application.register("leave", LeaveController)

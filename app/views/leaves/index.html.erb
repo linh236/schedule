@@ -1,0 +1,17 @@
+<div class="flex flex-col md:flex-row mr-4 md:mr-0 gap-3" data-controller="leave">
+  <div class="basis-1/4 max-h-screen overflow-y-auto hidden md:block">
+    <div class="relative mt-2 w-full mb-2 flex flex-col md:flex-row gap-2">
+      <%= select_tag 'select_status' , options_for_select(Event.statuses.collect{ |u| [u[0].capitalize, u[1]] }), data: {action: "change->leave#selectStatus"}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" %>
+        <input type="month" data-leave-target="month"
+          class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Select date" data-action="change->leave#selectMonth">
+    </div>
+    <div id="leave-list">
+        <%= render partial: "leaves/shared/leave" , locals: { leaves: @leaves } %>
+    </div>
+  </div>
+
+  <div class="basis-3/4 min-h-[460px] md:h-[83vh] rounded-lg border border-gray-200 shadow-md overflow-y-auto">
+    <div class="p-3" id="leave-detail"></div>
+  </div>
+</div>

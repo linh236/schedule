@@ -1,0 +1,3 @@
+<%= turbo_stream.update "leave-list" do %>
+  <%= render partial: "leaves/shared/leave" , locals: { leaves: @leaves } %>
+<% end %>

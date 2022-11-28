@@ -80,3 +80,5 @@ gem "simple_calendar", "~> 2.4"
 gem "paranoia", "~> 2.6"
 
 gem "pagy", "~> 5.10"
+
+gem "rspec", "~> 3.12"
